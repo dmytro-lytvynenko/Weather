@@ -21,7 +21,8 @@
 
 #include "gtest/gtest.h"
 
-#include <limits>
+#include <iostream>
+
 #include <vector>
 #include <ctime>
 
@@ -35,13 +36,13 @@ const char* buf_company = "As a full-lifecycle product development services comp
 						  professional development that gives you exposure to a variety \
 						  of interesting, hands-on projects.";
 
-TEST(Coder, sizeof)
+TEST(Coder, sizeof) //1
 {
 	typedef struct { char* b; int s; } coder_t;
 	EXPECT_EQ(sizeof(coder_t), sizeof(Coder));
 }
 
-TEST(Coder, set)
+TEST(Coder, set) //2
 {
 	Coder coder;
 	coder.set(buf_hello, strlen(buf_hello) + 1);
@@ -49,7 +50,7 @@ TEST(Coder, set)
 	EXPECT_STREQ(buf_hello, coder.buf());
 }
 
-TEST(Coder, buf)
+TEST(Coder, buf) //3
 {
 	Coder coder;
 	coder.set(buf_company, strlen(buf_company) + 1);
@@ -58,14 +59,14 @@ TEST(Coder, buf)
 	EXPECT_STREQ(buf_company, coder.buf());
 }
 
-TEST(Coder, init_buf)
+TEST(Coder, init_buf) //4
 {
 	Coder coder;
 
 	EXPECT_THROW(coder.set(0, 1), std::logic_error);
 }
 
-TEST(Coder, init_len)
+TEST(Coder, init_len) //5
 {
 	Coder coder;
 
@@ -73,7 +74,7 @@ TEST(Coder, init_len)
 	EXPECT_THROW(coder.set(buf_hello, std::numeric_limits<unsigned int>::max()), std::logic_error);
 }
 
-TEST(Coder, init_values)
+TEST(Coder, init_values) //6
 {
 	Coder* pCoder = new Coder;
 
@@ -83,7 +84,7 @@ TEST(Coder, init_values)
 	delete pCoder;
 }
 
-TEST(Coder, two_coders)
+TEST(Coder, two_coders) //7
 {
 	Coder coder;
 	coder.set(buf_company, strlen(buf_company) + 1);
@@ -95,7 +96,7 @@ TEST(Coder, two_coders)
 	EXPECT_STREQ(coder.buf(), coder2.buf());
 }
 
-TEST(Coder, two_coders2)
+TEST(Coder, two_coders2) //8
 {
 	Coder* pCoder = new Coder;
 	pCoder->set(buf_hello, strlen(buf_hello) + 1);
@@ -110,7 +111,7 @@ TEST(Coder, two_coders2)
 	delete pCoder;
 }
 
-TEST(Coder, encode)
+TEST(Coder, encode) //9
 {
 	const int size = strlen(buf_hello) + 1;
 
@@ -131,20 +132,20 @@ TEST(Coder, encode)
 	EXPECT_STREQ(buf, coder.buf());
 }
 
-TEST(Coder, decode)
-{
-	Coder coder;
-	coder.set(buf_company, strlen(buf_company) + 1);
-
-	EXPECT_STREQ(buf_company, coder.buf());
-
-	coder.encode();
-
-	EXPECT_STRNE(buf_company, coder.buf());
-
-	coder.decode();
-
-	EXPECT_STREQ(buf_company, coder.buf());
+TEST(Coder, decode) //10 
+{ 
+ Coder coder; 
+ coder.set(buf_company, strlen(buf_company) + 1); 
+ 
+ EXPECT_STREQ(buf_company, coder.buf()); 
+ 
+ coder.encode(); 
+ 
+ EXPECT_STRNE(buf_company, coder.buf()); 
+ 
+ coder.decode(); 
+ 
+ EXPECT_STREQ(buf_company, coder.buf()); 
 }
 
 void test(const char* buf, int size)
@@ -177,25 +178,25 @@ void test(const char* buf, int size)
 	}
 }
 
-TEST(Coder, test_1)
+TEST(Coder, test_1) //11
 {
 	char buf[] = {1};
 	test(buf, sizeof(buf));
 }
 
-TEST(Coder, test_2)
+TEST(Coder, test_2) //12
 {
 	char buf[] = {1, 2};
 	test(buf, sizeof(buf));
 }
 
-TEST(Coder, test_3)
+TEST(Coder, test_3) //13
 {
 	char buf[] = {1, 2, 3};
 	test(buf, sizeof(buf));
 }
 
-TEST(Coder, test_rand)
+TEST(Coder, test_rand) //14
 {
 	srand( time(0) );
 	int size = 10000;
