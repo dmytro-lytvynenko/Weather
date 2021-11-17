@@ -1,0 +1,9 @@
+build-job:
+        stage: build
+        script:
+                - cd ..
+                - rm -r googletest
+                - git clone https://github.com/google/googletest.git
+                - cd dmytro.lytvynenko
+                - make clean
+                - make all
