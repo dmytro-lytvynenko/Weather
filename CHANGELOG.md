@@ -37,3 +37,13 @@
 - CHANGELOG.md file
 
 ### Removed
+
+## [1.0.3] - 2021-11-20
+### Added
+
+
+### Changed
+- Makefile for changing warnings to errors
+- CHANGELOG.md file
+
+### Removed

@@ -70,7 +70,7 @@ void Coder::set(const char* buf, int size) {
   m_buf = new char[size];
   m_size = size;
 
-  for (size_t i = 0; i < size; i++) m_buf[i] = buf[i];
+  for (size_t i = 0; i < static_cast<size_t>(size); i++) m_buf[i] = buf[i];
 }
 
 char* Coder::buf() const { return m_buf; }
@@ -80,7 +80,7 @@ int Coder::size() const { return m_size; }
 void Coder::decode() {
   delete m_buf;
   m_buf = new char[safe_size];
-  for (size_t i = 0; i < safe_size - 1; i++)
+  for (size_t i = 0; i < static_cast<size_t>(safe_size - 1); i++)
     if (safe + i == NULL) *(safe + i) = '0';
 
   memcpy(m_buf, safe, safe_size);
