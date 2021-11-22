@@ -80,9 +80,6 @@ int Coder::size() const { return m_size; }
 void Coder::decode() {
   delete m_buf;
   m_buf = new char[safe_size];
-  for (size_t i = 0; i < static_cast<size_t>(safe_size - 1); i++)
-    if (safe + i == NULL) *(safe + i) = '0';
-
   memcpy(m_buf, safe, safe_size);
   m_size = safe_size;
 }

@@ -47,3 +47,15 @@
 - CHANGELOG.md file
 
 ### Removed
+
+## [1.0.4] - 2021-11-22
+### Added
+
+
+### Changed
+- Makefile: added cppcheck
+- coder.cpp file to fix warnings
+- .gitlab-ci.yml file
+- CHANGELOG.md file
+
+### Removed

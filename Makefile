@@ -81,7 +81,10 @@ GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
 all : $(TESTS)
 
 clean :
-	rm -fr $(TESTS) gtest.a gtest_main.a *.o
+	rm -fr $(TESTS) gtest.a gtest_main.a *.o   
+
+cppcheck :
+	cppcheck -q --enable=warning,style,performance,portability $(SOURCE_DIR)
 
 # Builds gtest.a and gtest_main.a.
 

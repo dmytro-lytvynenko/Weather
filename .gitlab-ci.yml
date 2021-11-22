@@ -1,6 +1,9 @@
 build-job:
         stage: build
         script:
+                - apt update
+                - apt install cppcheck -y
+                - make cppcheck
                 - cd ..
                 - rm -r googletest
                 - git clone https://github.com/google/googletest.git
