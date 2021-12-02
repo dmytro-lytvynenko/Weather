@@ -86,6 +86,9 @@ clean :
 cppcheck :
 	cppcheck -q --enable=warning,style,performance,portability $(SOURCE_DIR)
 
+clangtidy : 
+	clang-tidy project/coder.cpp -checks=-*,clang-analyzer-*,-clang-analyzer-cplusplus* --
+
 # Builds gtest.a and gtest_main.a.
 
 # Usually you shouldn't tweak such internal variables, indicated by a

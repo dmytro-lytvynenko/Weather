@@ -59,3 +59,15 @@
 - CHANGELOG.md file
 
 ### Removed
+
+## [1.0.4] - 2021-01-12
+### Added
+- .clang-tidy file
+
+### Changed
+- Makefile: added clang-tidy
+- coder.cpp file to fix warnings
+- .gitlab-ci.yml file
+- CHANGELOG.md file
+
+### Removed

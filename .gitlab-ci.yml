@@ -3,9 +3,11 @@ build-job:
         script:
                 - apt update
                 - apt install cppcheck -y
+                - apt install clang -y
+                - apt install clang-tidy -y
                 - make cppcheck
+                - make clangtidy
                 - cd ..
-                - rm -r googletest
                 - git clone https://github.com/google/googletest.git
                 - cd dmytro.lytvynenko
                 - make clean

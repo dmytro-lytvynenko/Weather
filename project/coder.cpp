@@ -33,7 +33,7 @@ Coder::Coder() : m_buf(0), m_size(0) {}
 Coder::Coder(const Coder& source_coder)
     : m_buf(source_coder.m_buf), m_size(source_coder.m_size) {
   this->m_buf = new char[this->m_size + 1];
-  strcpy(this->m_buf, source_coder.m_buf);
+  strncpy(this->m_buf, source_coder.m_buf, this->m_size + 1);
 }
 
 Coder::~Coder() {
@@ -46,7 +46,7 @@ Coder& Coder::operator=(const Coder& source_coder) {
 
   this->m_size = source_coder.m_size;
   this->m_buf = new char[m_size + 1];
-  strcpy(this->m_buf, source_coder.m_buf);
+  strncpy(this->m_buf, source_coder.m_buf, this->m_size + 1);
   return *this;
 }
 
