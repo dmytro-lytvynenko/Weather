@@ -24,7 +24,7 @@ endif
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g -std=c++11 -Wall -Wextra -pthread -pedantic -Werror
+CXXFLAGS += -g -std=c++11 -Wall -Wextra -pthread -pedantic -Werror -fsanitize=address,undefined
 
 # Flags passed to the C++ compiler for compiling coder_gTest.o
 CXXFLAGS_FOR_TESTS += -g -std=c++11 -Wall -Wextra -pthread -pedantic

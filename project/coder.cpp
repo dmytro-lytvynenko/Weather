@@ -51,7 +51,7 @@ Coder& Coder::operator=(const Coder& source_coder) {
 }
 
 void Coder::encode() {
-  delete safe;
+  delete[] safe;
   safe = new char[m_size];
   memcpy(safe, m_buf, m_size);
   safe_size = m_size;
@@ -78,7 +78,7 @@ char* Coder::buf() const { return m_buf; }
 int Coder::size() const { return m_size; }
 
 void Coder::decode() {
-  delete m_buf;
+  delete[] m_buf;
   m_buf = new char[safe_size];
   memcpy(m_buf, safe, safe_size);
   m_size = safe_size;
