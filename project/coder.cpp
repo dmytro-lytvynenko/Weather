@@ -33,7 +33,7 @@ Coder::Coder() : m_buf(0), m_size(0) {}
 Coder::Coder(const Coder& source_coder)
     : m_buf(source_coder.m_buf), m_size(source_coder.m_size) {
   this->m_buf = new char[this->m_size + 1];
-  strcpy(this->m_buf, source_coder.m_buf);
+  strncpy(this->m_buf, source_coder.m_buf, this->m_size + 1);
 }
 
 Coder::~Coder() {
@@ -46,12 +46,12 @@ Coder& Coder::operator=(const Coder& source_coder) {
 
   this->m_size = source_coder.m_size;
   this->m_buf = new char[m_size + 1];
-  strcpy(this->m_buf, source_coder.m_buf);
+  strncpy(this->m_buf, source_coder.m_buf, this->m_size + 1);
   return *this;
 }
 
 void Coder::encode() {
-  delete safe;
+  delete[] safe;
   safe = new char[m_size];
   memcpy(safe, m_buf, m_size);
   safe_size = m_size;
@@ -70,7 +70,7 @@ void Coder::set(const char* buf, int size) {
   m_buf = new char[size];
   m_size = size;
 
-  for (size_t i = 0; i < size; i++) m_buf[i] = buf[i];
+  for (size_t i = 0; i < static_cast<size_t>(size); i++) m_buf[i] = buf[i];
 }
 
 char* Coder::buf() const { return m_buf; }
@@ -78,11 +78,8 @@ char* Coder::buf() const { return m_buf; }
 int Coder::size() const { return m_size; }
 
 void Coder::decode() {
-  delete m_buf;
+  delete[] m_buf;
   m_buf = new char[safe_size];
-  for (size_t i = 0; i < safe_size - 1; i++)
-    if (safe + i == NULL) *(safe + i) = '0';
-
   memcpy(m_buf, safe, safe_size);
   m_size = safe_size;
 }

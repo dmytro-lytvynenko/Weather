@@ -37,3 +37,47 @@
 - CHANGELOG.md file
 
 ### Removed
+
+## [1.0.3] - 2021-11-20
+### Added
+
+
+### Changed
+- Makefile for changing warnings to errors
+- CHANGELOG.md file
+
+### Removed
+
+## [1.0.4] - 2021-11-22
+### Added
+
+
+### Changed
+- Makefile: added cppcheck
+- coder.cpp file to fix warnings
+- .gitlab-ci.yml file
+- CHANGELOG.md file
+
+### Removed
+
+## [1.0.5] - 2021-01-12
+### Added
+- .clang-tidy file
+
+### Changed
+- Makefile: added clang-tidy
+- coder.cpp file to fix warnings
+- .gitlab-ci.yml file
+- CHANGELOG.md file
+
+### Removed
+
+## [1.0.6] - 2021-01-12
+### Added
+
+### Changed
+- Makefile: added -fsanitize key
+- coder.cpp file to fix errors
+- CHANGELOG.md file
+
+### Removed
