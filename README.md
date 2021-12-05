@@ -1,6 +1,2 @@
-The list of files which are allowed to be modified:
-    project/coder.cpp
-    project/coder.h
-    Makefile
-
-Other files will be restored on Jenkins CI side before each build.
+## Intro
+- Worked with Git while I was editing my intro-task with clang-format and fixing errors after adding check-flags into Makefile
