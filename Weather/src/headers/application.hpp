@@ -1,3 +1,11 @@
+#pragma once
+#include <iostream>
+#include "boost/asio.hpp"
+#include "boost/beast.hpp"
+#include "boost/program_options.hpp"
+
+namespace po = boost::program_options;
+
 class Application
 {
 public:
@@ -27,4 +35,12 @@ public:
      * @brief Parse command-line arguments ( Need to use boost::program_options ). Call Client
      * */
     int exec();
+
+    ~Application();
+    
+private:
+    po::options_description desc;
+    
+    int m_argc;
+    char** m_argv;
 };

@@ -1,0 +1,3 @@
+/home/dmytro/globallogic/weather/Weather/CMakeFiles/Weather.dir
+/home/dmytro/globallogic/weather/Weather/CMakeFiles/edit_cache.dir
+/home/dmytro/globallogic/weather/Weather/CMakeFiles/rebuild_cache.dir

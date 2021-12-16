@@ -1,4 +1,10 @@
 #pragma once
+#include <iostream>
+#include "boost/asio.hpp"
+#include "boost/property_tree/ptree.hpp"
+#include "boost/property_tree/json_parser.hpp"
+#include "boost/beast.hpp"
+#include "boost/program_options.hpp"
 
 namespace NetworkLayer
 {
@@ -22,7 +28,8 @@ namespace NetworkLayer
          * @param context_ptr - smart pointer to io_context
          * @param connectionIP - structure that contains host and port for connection
          * */
-        Network(const ContextPtr & context_ptr, IPAddress connectionIP);
+        Network(const ContextPtr & context_ptr, const IPAddress & connectionIP,
+                const std::string & city_name);
 
         /**
          * @brief Connection to server
@@ -41,6 +48,8 @@ namespace NetworkLayer
          * */
         std::string receive();
 
+        ~Network();
+
     private:
 
         /**
@@ -54,5 +63,12 @@ namespace NetworkLayer
          * @returns server response
          * */
         http::response<http::dynamic_body> p_receive();
+
+        ContextPtr io_context;
+        IPAddress connectionIP;
+        tcp::socket m_socket;
+        tcp::resolver resolver;
+        std::string m_city;
+        boost::system::error_code error_code;
     };
 }
