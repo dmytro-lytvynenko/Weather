@@ -16,7 +16,7 @@ namespace ClientLayer
          * @param port - server port
          * */
         Client(const NetworkLayer::ContextPtr & context_ptr, 
-               const std::string host, const std::string port);
+               const std::string & host, const std::string & port);
 
         /**
          * @brief Main function that connections to server, sends request and shows result
@@ -25,18 +25,15 @@ namespace ClientLayer
 
         void setCity(const std::string & city_name);
         void setToken(const std::string & token);
-        void setAddress(const std::string & address);
-        void setPort(const std::string & port);
+        std::string getCity() const;
 
     private:
-
-        bool getToken();
+        
+        std::string parse(const std::string & json);
 
         std::shared_ptr<NetworkLayer::Network> m_connection;
-        
+
         std::string m_city;
         std::string m_token;
-        std::string m_address = "api.openweathermap.org";
-        std::string m_port = "80";
     };
 }

@@ -35,8 +35,6 @@ public:
      * @brief Parse command-line arguments ( Need to use boost::program_options ). Call Client
      * */
     int exec();
-
-    ~Application();
     
 private:
     po::options_description desc;

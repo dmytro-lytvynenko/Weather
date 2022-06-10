@@ -1,19 +1,12 @@
 cmake_minimum_required(VERSION 3.14)
+project(Weather)
 
-set(This Weather)
+set(CMAKE_CXX_STANDARD 14)
 
-project(${This} CXX)
+find_package(Boost COMPONENTS system filesystem program_options REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
 
-find_package(Threads REQUIRED)
-find_package(Boost REQUIRED COMPONENTS program_options system filesystem)
+add_executable(Weather src/sources/main.cpp src/sources/client.cpp src/sources/network.cpp src/sources/application.cpp)
 
-file(GLOB Sources "src/sources/*.cpp")
-file(GLOB Headers "src/headers/*.hpp")
-
-set (CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address")
-set (CMAKE_LINKER_FLAGS_DEBUG "${CMAKE_LINKER_FLAGS_DEBUG} -fno-omit-frame-pointer -fsanitize=address")
-
-add_executable(${This} ${Sources} ${Headers})
-
-target_include_directories(${This} PUBLIC "src/headers")
-target_link_libraries(${This} PUBLIC Threads::Threads Boost::program_options Boost::system Boost::filesystem)
+target_include_directories(Weather PUBLIC src/headers/ )
+target_link_libraries(Weather ${Boost_LIBRARIES} pthread)
